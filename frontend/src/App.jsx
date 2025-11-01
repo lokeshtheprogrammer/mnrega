@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import DistrictReport from "./components/DistrictReport";
+import { getDistricts } from "./api.js";
+
 
 function App() {
   const [selectedDistrict, setSelectedDistrict] = useState("");
