@@ -1,0 +1,56 @@
+[
+  {
+    "state": "Tamil Nadu",
+    "district": "Ariyalur",
+    "month": "October",
+    "year": 2025,
+    "total_jobs": 120000,
+    "total_person_days": 800000,
+    "total_wages_paid": 100000000
+  },
+  {
+    "state": "Tamil Nadu",
+    "district": "Chengalpattu",
+    "month": "October",
+    "year": 2025,
+    "total_jobs": 150000,
+    "total_person_days": 1000000,
+    "total_wages_paid": 125000000
+  },
+  {
+    "state": "Tamil Nadu",
+    "district": "Chennai",
+    "month": "October",
+    "year": 2025,
+    "total_jobs": 180000,
+    "total_person_days": 1200000,
+    "total_wages_paid": 150000000
+  },
+  {
+    "state": "Tamil Nadu",
+    "district": "Coimbatore",
+    "month": "October",
+    "year": 2025,
+    "total_jobs": 200000,
+    "total_person_days": 1500000,
+    "total_wages_paid": 180000000
+  },
+  {
+    "state": "Tamil Nadu",
+    "district": "Cuddalore",
+    "month": "October",
+    "year": 2025,
+    "total_jobs": 160000,
+    "total_person_days": 1100000,
+    "total_wages_paid": 130000000
+  },
+  {
+    "state": "Tamil Nadu",
+    "district": "Dharmapuri",
+    "month": "October",
+    "year": 2025,
+    "total_jobs": 130000,
+    "total_person_days": 900000,
+    "total_wages_paid": 110000000
+  }
+]

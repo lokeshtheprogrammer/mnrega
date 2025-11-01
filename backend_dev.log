@@ -1,0 +1,13 @@
+[dotenv@17.2.3] injecting env (2) from .env -- tip: 📡 add observability to secrets: https://dotenvx.com/ops
+Server is running on port 3001
+MongoParseError: Invalid scheme, expected connection string to start with "mongodb://" or "mongodb+srv://"
+    at new ConnectionString (/app/backend/node_modules/mongodb-connection-string-url/lib/index.js:86:19)
+    at parseOptions (/app/backend/node_modules/mongodb/lib/connection_string.js:197:17)
+    at new MongoClient (/app/backend/node_modules/mongodb/lib/mongo_client.js:68:61)
+    at NativeConnection.createClient (/app/backend/node_modules/mongoose/lib/drivers/node-mongodb-native/connection.js:343:14)
+    at NativeConnection.openUri (/app/backend/node_modules/mongoose/lib/connection.js:1075:34)
+    at Mongoose.connect (/app/backend/node_modules/mongoose/lib/mongoose.js:450:15)
+    at Object.<anonymous> (/app/backend/index.js:10:10)
+    at Module._compile (node:internal/modules/cjs/loader:1706:14)
+    at Object..js (node:internal/modules/cjs/loader:1839:10)
+    at Module.load (node:internal/modules/cjs/loader:1441:32)
