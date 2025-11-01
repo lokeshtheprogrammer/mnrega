@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { getLatestStats, getHistoryStats } from "../api";
 import { Line } from "react-chartjs-2";
+import { something } from "../api.js";
+
+
 import {
   Chart as ChartJS,
   CategoryScale,
