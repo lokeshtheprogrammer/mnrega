@@ -1,100 +1,84 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import DistrictReport from './components/DistrictReport';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import DistrictReport from "./components/DistrictReport";
 
 function App() {
-  const [selectedDistrict, setSelectedDistrict] = useState('');
-  const [language, setLanguage] = useState('en');
+  const [selectedDistrict, setSelectedDistrict] = useState("");
+  const [language, setLanguage] = useState("en");
   const [showReport, setShowReport] = useState(false);
   const [districts, setDistricts] = useState([]);
 
   useEffect(() => {
     const fetchDistricts = async () => {
       try {
-        const response = await axios.get('/api/districts');
-        setDistricts(response.data);
+        const response = await axios.get("/api/districts");
+        setDistricts(response.data || []);
       } catch (error) {
-        console.error('Error fetching districts:', error);
+        console.error("Error fetching districts:", error);
       }
     };
     fetchDistricts();
   }, []);
 
-  const handleDistrictChange = (event) => {
-    setSelectedDistrict(event.target.value);
-    setShowReport(false);
-  };
-
-  const handleLanguageChange = (event) => {
-    setLanguage(event.target.value);
-  };
-
   const handleSubmit = () => {
-    if (selectedDistrict) {
+    if (selectedDistrict.trim() !== "") {
       setShowReport(true);
     }
   };
 
-  const handleGeolocate = () => {
-    // Mocking geolocation result
-    const mockDistrict = 'Coimbatore';
-    if (districts.includes(mockDistrict)) {
-      setSelectedDistrict(mockDistrict);
-    }
-  };
-
   return (
-    <div className="min-h-screen bg-gray-100 flex flex-col items-center justify-center p-4">
-      <div className="max-w-md w-full bg-white p-8 rounded-lg shadow-md">
-        <h1 className="text-3xl font-bold text-center text-gray-800 mb-6">
-          {language === 'en' ? 'MGNREGA District Dashboard - Tamil Nadu' : 'மகாத்ма காந்தி தேசிய ஊரக வேலைவாய்ப்பு திட்டம் - தமிழ்நாடு'}
-        </h1>
+    <div className="min-h-screen p-6 bg-gray-100">
+      <div className="max-w-3xl mx-auto bg-white p-6 rounded-xl shadow-md">
 
-        <div className="flex justify-center mb-6">
-          <select
-            value={language}
-            onChange={handleLanguageChange}
-            className="p-2 rounded-md border border-gray-300"
-          >
-            <option value="en">English</option>
-            <option value="ta">தமிழ்</option>
-          </select>
-        </div>
+        <h2 className="text-2xl font-semibold text-center mb-6">
+          District Water Analysis Report
+        </h2>
 
+        {/* District Dropdown */}
         <div className="mb-4">
-          <button
-            onClick={handleGeolocate}
-            className="w-full bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-md mb-2"
-          >
-            {language === 'en' ? 'Detect My District' : 'எனது மாவட்டத்தைக் கண்டறியவும்'}
-          </button>
-          <label htmlFor="district" className="block text-gray-700 font-bold mb-2">
-            {language === 'en' ? 'Select District' : 'மாவட்டத்தைத் தேர்ந்தெடுக்கவும்'}
-          </label>
+          <label className="block font-medium mb-2">Select District:</label>
           <select
-            id="district"
             value={selectedDistrict}
-            onChange={handleDistrictChange}
-            className="w-full p-2 rounded-md border border-gray-300"
+            onChange={(e) => setSelectedDistrict(e.target.value)}
+            className="w-full border p-2 rounded"
           >
-            <option value="">{language === 'en' ? '-- Select a District --' : '-- ஒரு மாவட்டத்தைத் தேர்ந்தெடுக்கவும் --'}</option>
-            {districts.map((district) => (
-              <option key={district} value={district}>
-                {district}
+            <option value="">-- Select --</option>
+            {districts.map((dist, index) => (
+              <option key={index} value={dist}>
+                {dist}
               </option>
             ))}
           </select>
         </div>
 
+        {/* Language Select */}
+        <div className="mb-4">
+          <label className="block font-medium mb-2">Select Language:</label>
+          <select
+            value={language}
+            onChange={(e) => setLanguage(e.target.value)}
+            className="w-full border p-2 rounded"
+          >
+            <option value="en">English</option>
+            <option value="ta">Tamil</option>
+          </select>
+        </div>
+
+        {/* Submit Button */}
         <button
           onClick={handleSubmit}
-          className="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-md"
+          className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded text-lg"
         >
-          {language === 'en' ? 'Show District Report' : 'மாவட்ட அறிக்கையைக் காட்டு'}
+          View Report
         </button>
-      </div>
 
-      {showReport && <DistrictReport district={selectedDistrict} language={language} />}
+        {/* Report Component */}
+        {showReport && selectedDistrict && (
+          <div className="mt-8">
+            <DistrictReport district={selectedDistrict} language={language} />
+          </div>
+        )}
+      </div>
     </div>
   );
 }
