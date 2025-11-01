@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import DistrictReport from "./components/DistrictReport";
-import { getDistricts } from "./api.js";
-
+import { getDistricts } from "./api";
 
 function App() {
   const [selectedDistrict, setSelectedDistrict] = useState("");
@@ -13,7 +11,7 @@ function App() {
   useEffect(() => {
     const fetchDistricts = async () => {
       try {
-        const response = await axios.get("/api/districts");
+        const response = await getDistricts();
         setDistricts(response.data || []);
       } catch (error) {
         console.error("Error fetching districts:", error);
@@ -66,7 +64,7 @@ function App() {
           </select>
         </div>
 
-        {/* Submit Button */}
+        {/* Submit */}
         <button
           onClick={handleSubmit}
           className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded text-lg"
