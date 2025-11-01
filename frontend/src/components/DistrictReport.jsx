@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { getLatestStats, getHistoryStats } from "../api.js";
+import { getLatestStats, getHistoryStats } from "../api";
 import { Line } from "react-chartjs-2";
 import {
   Chart as ChartJS,
@@ -46,7 +46,6 @@ const DistrictReport = ({ district, language }) => {
     return <div className="text-center p-4 text-gray-600">Loading...</div>;
   }
 
-  // Prepare chart data
   const chartData = {
     labels: history.map((entry) => entry.month),
     datasets: [
@@ -68,7 +67,9 @@ const DistrictReport = ({ district, language }) => {
   return (
     <div className="p-6 max-w-3xl mx-auto bg-white rounded-lg shadow">
       <h2 className="text-2xl font-bold mb-4 text-center">
-        {language === "ta" ? `${district} மாவட்ட அறிக்கை` : `${district} District Report`}
+        {language === "ta"
+          ? `${district} மாவட்ட அறிக்கை`
+          : `${district} District Report`}
       </h2>
 
       <div className="grid grid-cols-3 gap-4 text-center border p-4 rounded-lg">
@@ -82,7 +83,7 @@ const DistrictReport = ({ district, language }) => {
         </div>
         <div>
           📅 <strong>{stats.total_workdays}</strong><br />
-          {language === "ta" ? "பணிநாட்கள்" : "Workdays"}
+          {language === "ta" ? "பணிநாள்கள்" : "Workdays"}
         </div>
       </div>
 
