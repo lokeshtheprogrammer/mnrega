@@ -1,26 +1,29 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const cors = require('cors');   // ✅ Add this
 const statsRouter = require('./routes/stats');
-const cors = require('cors');   // <--- Add this
 require('dotenv').config();
 
 const app = express();
 const port = process.env.PORT || 3000;
 const mongoURI = process.env.MONGODB_URI;
 
-// Allow requests from your frontend
+// ✅ Allow your Vercel Frontend to access this backend
 app.use(cors({
-  origin: '*', // Or replace '*' with your vercel URL for security
+  origin: "*", // or put your vercel link here for security later
   methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true
 }));
 
+// ✅ If your API uses JSON body
+app.use(express.json());
+
 mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(() => console.log('MongoDB connected'))
+  .then(() => console.log('✅ MongoDB connected'))
   .catch(err => console.log(err));
 
 app.use('/api', statsRouter);
 
 app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
+  console.log(`🚀 Server is running on port ${port}`);
 });
