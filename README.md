@@ -1,120 +1,103 @@
-# MGNREGA District Performance Dashboard - Tamil Nadu
+# MNREGA (mnrega)
 
-A simple, easy-to-use web application that allows citizens in Tamil Nadu to check district-level MGNREGA performance data. The dashboard is designed with a clean, icon-based interface, making it accessible for low-literacy rural users.
+A JavaScript-based web application to manage and view MNREGA-related data (placeholder name). This repository contains the frontend and/or backend code written primarily in JavaScript.
 
-## Tech Stack
+## Table of contents
+- [About](#about)
+- [Features](#features)
+- [Tech stack](#tech-stack)
+- [Getting started](#getting-started)
+- [Development](#development)
+- [Environment variables](#environment-variables)
+- [Build & deploy](#build--deploy)
+- [Contributing](#contributing)
+- [License](#license)
+- [Contact](#contact)
 
-- **Backend:** Node.js, Express.js
-- **Frontend:** React, Vite, Tailwind CSS, Chart.js
-- **Database:** MongoDB Atlas
+## About
+Short description: This project aims to provide an interface and tooling to manage and visualize MNREGA (MGNREGA) data, participants, attendance, and payments. Adapt this description to the actual responsibilities of the repository.
 
 ## Features
+- View and search MNREGA records
+- Create and update records (if applicable)
+- Export and report generation (CSV/JSON)
+- Responsive UI (if frontend)
+- RESTful API endpoints (if backend)
 
--   **District-Level Data:** View key performance metrics for any district in Tamil Nadu.
--   **Key Metrics Display:**
-    -   Total persons employed (👨‍🌾)
-    -   Total wages paid (💰)
-    -   Total work days generated (📅)
--   **Historical Performance:** A clear line/bar chart showing performance data for the last 6 months.
--   **Language Options:** Supports both English and Tamil to cater to a wider audience.
--   **Simple Interface:** Large fonts, big buttons, and icons for easy navigation and understanding.
--   **Geolocation (Bonus):** Can detect the user's approximate district to pre-select it.
+## Tech stack
+- Primary language: JavaScript
+- Typical frameworks/tools used (adjust as necessary):
+  - Frontend: React / Vue / plain HTML+JS
+  - Backend: Node.js + Express
+  - Bundler: Webpack / Vite
+  - Testing: Jest / Mocha
+  - Linting: ESLint, Prettier
 
-## Folder Structure
+## Getting started
 
-The project is organized as a monorepo with two main folders:
+Prerequisites
+- Node.js (>= 16) and npm or yarn installed
+- (Optional) PostgreSQL / MongoDB if the project uses a database
 
-```
-project-root/
- ├─ backend/
- │   ├─ index.js           # Server entry point
- │   ├─ models/            # Mongoose database schemas
- │   ├─ routes/            # API endpoint definitions
- │   ├─ scripts/           # Data seeding scripts
- │   └─ .env               # Environment variables
- └─ frontend/
-     ├─ src/               # React application source code
-     ├─ public/
-     └─ netlify.toml       # Deployment configuration for Netlify
-```
-
-## Setup and Installation Steps
-
-Follow these steps to set up the project locally.
-
-**1. Clone the Project**
-
+Clone the repo
 ```bash
-git clone <your-repository-url>
-cd <your-repository-name>
+git clone https://github.com/lokeshtheprogrammer/mnrega.git
+cd mnrega
 ```
 
-**2. Install Backend Dependencies**
-
+Install dependencies
 ```bash
-cd backend
+# with npm
 npm install
+
+# or with yarn
+yarn install
 ```
 
-**3. Install Frontend Dependencies**
-
+Run locally
 ```bash
-cd ../frontend
-npm install
+npm run dev        # or `npm start` depending on repo scripts
+# or
+yarn dev
 ```
 
-**4. Configure Environment Variables**
+Open http://localhost:3000 (or the port the app uses).
 
-Create a `.env` file in the `backend` directory and add your MongoDB connection string.
+## Development
 
-```env
-# backend/.env
-MONGO_URI=mongodb+srv://admin:LOK%40prabu99@mnrega-cluster.ah2kn1d.mongodb.net/mnrega?retryWrites=true&w=majority
-PORT=5000
+Common npm scripts (verify in package.json)
+- `npm run dev` — start development server
+- `npm run build` — build production assets
+- `npm run start` — start production server
+- `npm test` — run tests
+- `npm run lint` — lint code
+
+## Environment variables
+Create a `.env` file in the project root and add required variables. Example:
 ```
-
-## How to Run the Application
-
-**1. Run the Backend Server**
-
-```bash
-cd backend
-npm start
+NODE_ENV=development
+PORT=3000
+DATABASE_URL=postgres://user:pass@localhost:5432/dbname
+API_KEY=your_api_key_here
 ```
-The backend will be running at `http://localhost:5000`.
+Adjust variables according to the project.
 
-**2. Run the Frontend Application**
+## Build & deploy
+1. Build: `npm run build`
+2. Serve built files with a static server or deploy to your hosting (Vercel, Netlify, Heroku, Docker, etc.)
+3. For backend: deploy Node.js server to your chosen platform and point environment variables appropriately.
 
-```bash
-cd frontend
-npm run dev
-```
-The frontend development server will be running at `http://localhost:5173`.
+## Contributing
+1. Fork the repository
+2. Create a feature branch: `git checkout -b feature/awesome-feature`
+3. Commit your changes: `git commit -m "Add awesome feature"`
+4. Push to the branch: `git push origin feature/awesome-feature`
+5. Open a Pull Request
 
-## Deployment
+Please follow the code style and run tests/lint before creating a PR.
 
-**Backend (Render / Railway)**
+## License
+Add your license here (e.g., MIT). If unsure, add a LICENSE file.
 
-1.  Push your code to a GitHub repository.
-2.  Create a new "Web Service" on Render and connect your repository.
-3.  Render will automatically detect the `render.yaml` file for configuration.
-4.  Set the `MONGO_URI` and `PORT` as environment variables in the Render dashboard.
-
-**Frontend (Vercel / Netlify)**
-
-1.  Once the backend is deployed, get its public URL (e.g., `https://your-backend.onrender.com`).
-2.  In the `frontend/netlify.toml` file, update the proxy redirect to point to your live backend URL.
-3.  Connect your GitHub repository to Netlify. Netlify will detect the `netlify.toml` file and deploy the site.
-
-## Screenshots
-
-*(Add your screenshots here)*
-
-`![Homepage](link-to-your-screenshot.png)`
-`![District Report](link-to-your-screenshot.png)`
-
-## Author
-
--   **Your Name**
-    -   LinkedIn: `(your-linkedin-url)`
-    -   GitHub: `(your-github-url)`
+## Contact
+Project maintained by lokeshtheprogrammer — open an issue or contact via GitHub.
